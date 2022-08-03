@@ -21,43 +21,47 @@
 
 <div class="container bg-light border">
 	<h1 class="titre">Liste des jeux</h1>
-	<div class="row">			
-				
-		<form action="ListJeux" method="get">
-			<label for="genres">Choisir un genre : </label>
-			<select name="genres" id="genres">
-				<option value="all">Tout les genres</option>
-				<c:forEach var="genre" items="${genres}">
-					<option value="${genre.genreId}"
-					<c:if test="${not empty selected and genre.genreId == selected}">
+	<form action="ListJeux" method="get">
+		<div class="row align-items-center">
+			<div class="col-12 col-md-4">
+				<label for="genres">Genre </label>
+				<select name="genres" id="genres">
+					<option value="all">Tout les genres</option>
+					<c:forEach var="genre" items="${genres}">
+						<option value="${genre.genreId}"
+						<c:if test="${not empty selected and genre.genreId == selected}">
+							selected
+						</c:if>
+						>${genre.description}</option>
+					</c:forEach>
+					<option value="new">Ajouter un genre</option>
+				</select>
+			</div>
+			<div class="col-12 col-md-4">
+				<label for="plateformes">Plateforme </label>
+				<select name="plateformes" id="plateformes">
+					<option value="all">Toutes les plateformes</option>
+					<c:forEach var="plateforme" items="${plateformes}">
+					<option value="${plateforme.plateformeId}"
+						<c:if test="${not empty selectedPlateforme and plateforme.plateformeId == selectedPlateforme}">
 						selected
-					</c:if>
-					>${genre.description}</option>			
-				</c:forEach>
-				<option value="new">Ajouter un genre</option>
-			</select> 
-			
-			<label for="plateformes">Choisir une plateforme : </label>
-			<select name="plateformes" id="plateformes">
-				<option value="all">Toutes les plateformes</option>
-				<c:forEach var="plateforme" items="${plateformes}">
-				<option value="${plateforme.plateformeId}"
-					<c:if test="${not empty selectedPlateforme and plateforme.plateformeId == selectedPlateforme}">
-					selected
-					</c:if>
-					>${plateforme.nom}</option>			
-				</c:forEach>
-				<option value="new">Ajouter une plateforme</option>
-			</select> 			
-		
-			<input type="submit" value="Envoyer">
-		</form>
-					
-	</div>
-	<div class="row">
-		<a href="GamePage"class="btn btn-primary mt-3">Create new game</a>
-	</div>
-	<div class="row">
+						</c:if>
+						>${plateforme.nom}</option>
+					</c:forEach>
+					<option value="new">Ajouter une plateforme</option>
+
+				</select>
+			</div>
+			<div class="col-12 col-md-2">
+				<input type="submit" value="Envoyer" class="btn btn-primary mt-3">
+			</div>
+			<div class="col-12 col-md-2">
+				<a href="GamePage"class="btn btn-primary mt-3">New game</a>
+			</div>
+		</div>
+	</form>
+
+	<div class="row align-items-center">
 		<table>
 			<thead>
 				<tr>
